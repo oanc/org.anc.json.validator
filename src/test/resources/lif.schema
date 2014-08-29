@@ -1,0 +1,67 @@
+/*
+ * Schema for the LAPPS Interchange Format.
+ *
+ * NOTE: This schema uses the Alternate Syntax for JSON Schema, which closely
+ * resembles the Javascript notation.
+ */
+
+def ns = 'http://ns.lappsgrid.org/lif/1.0'
+
+id ns
+title "LAPPS Interchange Format"
+description "The JSON-LD objects exchanged by LAPPS web services."
+type object
+properties {
+    text {
+    	id "$ns/text"
+        type object
+        properties {
+            '@value' { type string }
+            '@language' { type string }
+        }
+        required(['@value'])
+    }
+    metadata { id "$ns/metadata"; $ref '#/definitions/map' }
+    steps {
+    	id "$ns/steps"
+        type object
+        properties {
+            metadata { $ref '#/definitions/map' }
+            annotations { $ref '#/definitions/annotations' }
+        }
+    }
+}
+definitions {
+    // A HashMap. Used to store metadata at various levels.
+    map {
+        type object
+        additionalProperties true
+    }
+    // An array of annotations.
+    annotations {
+    	id "$ns/steps/annotations"
+        type array
+        items { $ref '#/definitions/annotation' }
+    }
+    // A single text annotation.
+    annotation {
+    	id "$ns/annotations/annotation"
+    	type object
+    	properties {
+			id { type string }
+			// TODO This should be 'label'
+			'@type' { type string }
+			start { type integer; minimum 0 }
+			end { type integer; minimum 0 }
+			features {
+			    id "$ns/annotations/annotation/features"
+			    $ref '#/definitions/map'
+			}
+			metadata {
+			    id "$ns/annotations/annotation/metadata"
+			    $ref '#/definitions/map'
+			}
+		}
+        required 'id', '@type', 'start', 'end'
+    }
+}
