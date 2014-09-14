@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.anc.lapps.json</groupId>
+    <groupId>org.anc.json</groupId>
     <artifactId>validator</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>JSON Schema Validator</name>
@@ -27,7 +27,7 @@
                 <artifactId>anc-maven-plugin</artifactId>
                 <version>1.0.6</version>
                 <configuration>
-                    <package>org.anc.json.schema.validator</package>
+                    <package>org.anc.json.validator</package>
                     <source>src/main</source>
                 </configuration>
                 <executions>
@@ -61,7 +61,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>org.anc.json.schema.Validator</mainClass>
+                            <mainClass>org.anc.json.validator.Validator</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -80,10 +80,15 @@
             <version>${ivy.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
             <type>jar</type>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.fge</groupId>
@@ -96,8 +101,8 @@
             <version>1.2.4</version>
         </dependency>
         <dependency>
-            <groupId>org.anc.lapps.json</groupId>
-            <artifactId>schema-compiler</artifactId>
+            <groupId>org.anc.json</groupId>
+            <artifactId>compiler</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
