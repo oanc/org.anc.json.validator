@@ -11,7 +11,7 @@
 
     <groupId>org.anc.json</groupId>
     <artifactId>validator</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>JSON Schema Validator</name>
     <description>Validate a JSON schema or a JSON instance against a JSON schema</description>
     <properties>

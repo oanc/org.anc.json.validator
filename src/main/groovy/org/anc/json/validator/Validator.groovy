@@ -171,18 +171,18 @@ instance will will be validated with the schema.
             return
         }
 
-        if (!params.s) {
-            println "\nERROR: no schema specified.\n"
-            cli.usage()
-            return
-        }
-
         if (params.v) {
             println """
 LAPPS JSON Validator v${Version.version}
 Copyright 2014 American National Corpus.
 
 """
+            return
+        }
+
+        if (!params.s) {
+            println "\nERROR: no schema specified.\n"
+            cli.usage()
             return
         }
 
