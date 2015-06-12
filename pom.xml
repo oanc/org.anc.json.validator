@@ -5,20 +5,18 @@
     <parent>
         <artifactId>groovy-parent-pom</artifactId>
         <groupId>org.anc.maven</groupId>
-        <version>1.0.0</version>
+        <version>1.5.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.anc.json</groupId>
     <artifactId>validator</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0-SNAPSHOT</version>
     <name>JSON Schema Validator</name>
     <description>Validate a JSON schema or a JSON instance against a JSON schema</description>
     <properties>
-        <groovy.version>2.2.0</groovy.version>
-        <ivy.version>2.2.0</ivy.version>
         <logback.version>1.0.11</logback.version>
-        <json.compiler.version>1.0.0</json.compiler.version>
+        <json.compiler.version>1.2.0-SNAPSHOT</json.compiler.version>
         <fge.validator.version>2.2.5</fge.validator.version>
         <fge.core.version>1.2.4</fge.core.version>
         <commons.cli.version>1.2</commons.cli.version>
@@ -73,16 +71,6 @@
         </plugins>
     </build>
     <dependencies>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>${groovy.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.ivy</groupId>
-            <artifactId>ivy</artifactId>
-            <version>${ivy.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
