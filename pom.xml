@@ -5,18 +5,38 @@
     <parent>
         <artifactId>groovy-parent-pom</artifactId>
         <groupId>org.anc.maven</groupId>
-        <version>1.5.0</version>
+        <version>1.5.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.anc.json</groupId>
     <artifactId>validator</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <name>JSON Schema Validator</name>
     <description>Validate a JSON schema or a JSON instance against a JSON schema</description>
+    <url>https://github.com/oanc/org.anc.json.validator</url>
+    <scm>
+        <url>https://github.com/oanc/org.anc.json.validator</url>
+        <connection>scm:git:https://github.com/oanc/org.anc.json.validator.git</connection>
+        <developerConnection>scm:git:https://github.com/oanc/org.anc.json.validator.git</developerConnection>
+    </scm>
+    <issueManagement>
+        <url>https://github.com/oanc/org.anc.json.validator/issues</url>
+        <system>GitHub issues</system>
+    </issueManagement>
+    <organization>
+        <name>American National Corpus</name>
+        <url>http://www.anc.org</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
     <properties>
         <logback.version>1.0.11</logback.version>
-        <json.compiler.version>1.2.0</json.compiler.version>
+        <json.compiler.version>1.2.1</json.compiler.version>
         <fge.validator.version>2.2.5</fge.validator.version>
         <fge.core.version>1.2.4</fge.core.version>
         <commons.cli.version>1.2</commons.cli.version>
@@ -27,7 +47,7 @@
             <plugin>
                 <groupId>org.anc.maven.plugins</groupId>
                 <artifactId>anc-maven-plugin</artifactId>
-                <version>1.0.6</version>
+                <version>1.0.7</version>
                 <configuration>
                     <package>org.anc.json.validator</package>
                     <source>src/main</source>
