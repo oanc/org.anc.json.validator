@@ -1,0 +1,19 @@
+language: groovy
+branches:
+  only:
+  - develop
+  - master
+env:
+  global:
+  - secure: qMt9/1jo9euxT1C8t2Vgoa53hM1GtpHpZhsEvelWLriO0xqyXNQ1IPjQpgQfUlo48cxeVPAm3GjIhp9KwU2b/Pdg3KoPkZcor0hoUHzYMpAo9H2yyMOFiv5N58xfj/qZyS40LexrbZfSLcUJmf4o/f7sP2Kz8ATeGyPeTaLQtJs=
+  - secure: PHvXvIrorQL9QwsEJ9AqZOTlX3QF3Bf+HEFTOxrCvr2VGbdHDpv6f9uUSkuC7Wg6BTxstZl882R3YrZeTXATxpOCuX1qwByacv0ZQLY+lOQWRqc9EoUyB84B+Kus9nRQDn0AH8DAu9yfVpHi3d2MyAqxNjMLniQEfsI9BFkieoQ=
+  - secure: YQGz475r69yI12LiOq8Sgv4lyb7ZVTKSwj/FhaE7Vikp8dYUjXe9tYpuB8tAdn2Em8p5S/AVxyzsEUza0O2CMXYFwMNqEz90NU9YKdpR+AUDrloy8hgSUJc/xxV6X4GU1U40BMGqYImySlzkA4w0uE6I9LWzzJ97ric5kxvmHhs=
+  - secure: isyTgQ2kKUDMrAk2wo/frS327uKjLEN0AKLfRlz7Ne+GCUiqMtRBA5JnZQRQFUMDStxqzO6RyScswv0lZurIp1JtcBqPnS9I6itTysgwG8J5DEw0GUN3duVwmjnnZjBeEDFIZ3qXyMjG3p+0zjBDFDGVclNMzuH+0T26QiJ0WxE=
+  - secure: HJ15RUchg0ERdxKoRYFi+oKqfh78cvWL4Fi8aHYT7yiPTX/Pun7fpO0uyGFyXLv5kWg5uysYs6PPbFT7Z7GNcyj9yVA8+FyAa/98h7h9gm0Syd+TlNBau15PBf4PfhAN1pW9ZB7nSObkOle7yVI0HWnTWowMWg7JlyowEdL4MVY=
+  - secure: MdiEIGo9sCrFQG50JgIojT1lRAK77ymbA+KG3CnwexesR+UJgN2yhWMmYIKzmQqOtSb/3UMoei1PhpPWdSE5cBRVo/MzbI6auGg1Lnu0BxGaPG2Fl/bIhZwYoqzfGGVhO8p8kMFzMw8OhWMf/NuHgHbjkYalej94rsV15F838ME=
+before_install:
+- chmod a+x ./deploy.sh
+script:
+- mvn clean test --settings settings.xml
+after_success:
+- if [ "$TRAVIS_BRANCH" == "master" ] ; then ./deploy.sh ; fi
