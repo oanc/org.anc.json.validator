@@ -30,4 +30,21 @@ The Java library contains two classes of interest:
 validates a JSON instance document against a JSON schema
 1. **SchemaValidator** <br/>
 validate a JSON Schema document against the [Draft-04 JSON Schema specification](http://json-schema.org/specification-links.html#draft-4).
+
 ## From the command line
+
+``` 
+java -jar jsonv-x.y.z.jar [-j|-a] -s <schema> [-i <instance.]
+```
+
+**OPTIONS**
+
+```text
+  -a, --alt              schema is specified using alternate syntax.
+  -h, --help             this usage message.
+  -i, --instance=PARAM   json instance to validate.
+  -j, --json             schema is specified in json.
+  -s, --schema=PARAM     schema to use for validation.
+  -v, --version          displays the current version number.
+
+```
