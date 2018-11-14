@@ -18,7 +18,7 @@ class ValidatorTest {
         validator = null
     }
 
-    @Ignore
+    @Test
     void testNumberSchema() {
         String schema = '{"type":"number"}'
         String instance = '42'
@@ -62,7 +62,7 @@ class ValidatorTest {
 
     }
 
-    @Ignore
+    @Test
     void testUnknownKeyWord() {
         String schema = """
 {
@@ -75,7 +75,7 @@ class ValidatorTest {
         assertTrue validator.validate(instance).isSuccess()
     }
 
-    @Ignore
+    @Test
     void testAlternateSyntax() {
         String schemaText = """
 title "Alternate Syntax"
@@ -94,10 +94,10 @@ properties {
         SchemaCompiler compiler = new SchemaCompiler()
         String json = compiler.compile(schemaText)
         validator = new Validator(json)
-        assertTrue validator.validate(instance).isSuccess()
+        check validator.validate(instance), true
     }
 
-    @Ignore
+    @Test
     void testAlternateSyntaxInvalidNumber() {
         println "ValidatorTest.testAlternateSyntaxInvalidNumber"
         String source = """
@@ -116,8 +116,9 @@ properties {
         String json = compiler.compile(source)
         validator = new Validator(json)
         def result = validator.validate(instance)
-        println result
-        assertFalse result.isSuccess()
+        check(result, false)
+//        println result
+//        assertFalse result.isSuccess()
     }
 
     private Validator getSchemaValidator() {
@@ -126,7 +127,7 @@ properties {
         return new Validator(url)
     }
 
-    @Ignore
+    @Test
     void validateASchema() {
         println "ValidatorTest.validateASchema"
         validator = getSchemaValidator()
@@ -143,11 +144,12 @@ properties {
         SchemaCompiler compiler = new SchemaCompiler()
         compiler.draftVersion = 4
         ProcessingReport report = validator.validate(compiler.compile(schema))
-        println "Report: " + report.toString()
-        assertFalse report.isSuccess()
+//        println "Report: " + report.toString()
+//        assertFalse report.isSuccess()
+        check(report, false)
     }
 
-    @Ignore
+//    @Test
     void invalidConstraint() {
         println "ValidatorTest.invalidConstraint"
         String schema = """
@@ -155,24 +157,29 @@ type object
 properties {
     i {
         type number
-        min 10
+        foo 10
     }
 }
 """
         String instance = '{"name":1}'
         validator = getSchemaValidator()
-        ProcessingReport report = validator.validate(new SchemaCompiler().compile(schema))
-        println "Report: " + report.toString()
-        int count = 0
-        def it = report.iterator()
-        while (it.hasNext()) {
-            ++count
-            println "${count}: ${it.next().toString()}"
-        }
-        assertTrue count > 0
+//        validator = Validator.alternateSyntax(schema)
+//        check(validator.validate(schema), false)
+        String json = new SchemaCompiler().compile(schema)
+        println json
+        ProcessingReport report = validator.validate(json)
+        check(report, false)
+//        println "Report: " + report.toString()
+//        int count = 0
+//        def it = report.iterator()
+//        while (it.hasNext()) {
+//            ++count
+//            println "${count}: ${it.next().toString()}"
+//        }
+//        assertTrue count > 0
     }
 
-    @Ignore
+    @Test
     void testArray() {
         SchemaCompiler compiler = new SchemaCompiler()
         compiler.draftVersion = 4
@@ -204,7 +211,7 @@ properties {
         check validator.validate(bad2), false
     }
 
-    @Ignore
+    @Test
     void definitionTest() {
         String source = """
 title 'Definition test.'
@@ -243,15 +250,15 @@ additionalProperties false
 }
 """
         validator = Validator.alternateSyntax(schema)
-        //check validator.validate(instance), false
-        ProcessingReport report = validator.validate(instance)
+        ProcessingReport report = check(validator.validate(instance), false)
+//        ProcessingReport report = validator.validate(instance)
         println report.toString()
     }
 
 
-    void check(ProcessingReport report, boolean expected) {
+    ProcessingReport check(ProcessingReport report, boolean expected) {
         if (report.isSuccess() == expected) {
-            return
+            return report
         }
         fail report.toString()
 

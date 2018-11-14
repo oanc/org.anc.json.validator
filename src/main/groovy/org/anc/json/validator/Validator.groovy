@@ -26,6 +26,7 @@ import com.github.fge.jsonschema.core.report.ReportProvider
 import com.github.fge.jsonschema.main.JsonSchema;
 import com.github.fge.jsonschema.main.JsonSchemaFactory
 import com.github.fge.jsonschema.main.JsonSchemaFactoryBuilder
+import groovy.cli.picocli.CliBuilder
 import groovy.util.logging.Slf4j
 import org.anc.json.compiler.SchemaCompiler;
 
@@ -154,6 +155,8 @@ If a json instance is not provided the schema will be validated
 with the Draft v4.0 JSON Schema specification.  Otherwise the
 instance will will be validated with the schema.
 
+Copyright 2018 American National Corpus.
+
 """
         cli.j(longOpt:'json', required:false, 'schema is specified in json.')
         cli.a(longOpt:'alt', required:false,  'schema is specified using alternate syntax.')
@@ -174,7 +177,7 @@ instance will will be validated with the schema.
         if (params.v) {
             println """
 LAPPS JSON Validator v${Version.version}
-Copyright 2014 American National Corpus.
+Copyright 2018 American National Corpus.
 
 """
             return
