@@ -37,7 +37,7 @@
     <properties>
         <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.2.3</logback.version>
-        <json.compiler.version>1.3.0</json.compiler.version>
+        <json.compiler.version>1.3.1</json.compiler.version>
         <fge.validator.version>2.2.5</fge.validator.version>
         <fge.core.version>1.2.4</fge.core.version>
     </properties>
